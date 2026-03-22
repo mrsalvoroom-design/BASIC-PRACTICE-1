@@ -3,65 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SALVO QUIZ FIXED UI</title>
+
+<title>🔥 SALVO QUIZ PRO</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
 
 <style>
 body{
-font-family:Arial;
-background:linear-gradient(135deg,#f5f0ff,#e9dcff);
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#6c2bd9,#9333ea);
+margin:0;
 padding:20px;
+color:#333;
 }
 
 .quiz{
-max-width:900px;
+max-width:800px;
 margin:auto;
 background:white;
 border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.2);
+box-shadow:0 25px 60px rgba(0,0,0,0.3);
 overflow:hidden;
+animation:fadeIn 0.5s ease;
 }
 
 .header{
-background:linear-gradient(135deg,#6c2bd9,#a855f7);
+background: linear-gradient(135deg,#7c3aed,#a855f7);
 color:white;
-text-align:center;
 padding:20px;
+text-align:center;
+}
+
+.progress{
+font-size:14px;
+opacity:0.9;
+margin-top:5px;
 }
 
 .content{
 padding:25px;
 }
 
+h3{
+margin-bottom:20px;
+}
+
 .option{
-padding:12px;
+padding:14px;
 margin:10px 0;
+border-radius:12px;
 border:1px solid #ddd;
-border-radius:10px;
 cursor:pointer;
 transition:0.2s;
 }
 
 .option:hover{
-background:#f3edff;
+transform:scale(1.02);
+background:#f5f3ff;
 }
 
-.correct{background:#d1fae5;}
-.wrong{background:#fee2e2;}
+.correct{
+background:#dcfce7;
+border-color:#22c55e;
+}
+
+.wrong{
+background:#fee2e2;
+border-color:#ef4444;
+}
 
 .explanation{
-background:#fff8dc;
-padding:10px;
-margin-top:10px;
+margin-top:15px;
+padding:12px;
+background:#fff7ed;
 border-left:5px solid orange;
 border-radius:10px;
+animation:fadeIn 0.3s ease;
 }
 
 .nav{
 display:flex;
 justify-content:space-between;
 padding:15px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#7c3aed;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#5b21b6;
 }
 
 .toast{
@@ -73,14 +110,21 @@ border-radius:10px;
 color:white;
 font-weight:bold;
 }
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
 
 <body>
 
 <div class="quiz">
+
 <div class="header">
 <h2>🔥 SALVO QUIZ PRO</h2>
+<div class="progress" id="progress"></div>
 </div>
 
 <div class="content">
@@ -90,9 +134,10 @@ font-weight:bold;
 </div>
 
 <div class="nav">
-<button onclick="prev()">⬅</button>
-<button onclick="next()">➡</button>
+<button onclick="prev()">⬅ Prev</button>
+<button onclick="next()">Next ➡</button>
 </div>
+
 </div>
 
 <audio id="correctSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3"></audio>
@@ -100,38 +145,60 @@ font-weight:bold;
 
 <script>
 
+const correctSound = document.getElementById("correctSound");
+const wrongSound = document.getElementById("wrongSound");
+
 const questions=[
-{q:"She ___ to school yesterday",o:["go","goes","went","going"],a:2,e:"Past tense → went"},
-{q:"He ___ playing now",o:["is","are","was","be"],a:0,e:"Present continuous"},
-{q:"They ___ finished homework",o:["has","have","is","are"],a:1,e:"Plural → have"}
+
+{q:"Where ___ your mom usually pick you up?",o:["do","does","is","did"],a:1,e:"'Mom' = she → pakai does"},
+{q:"___ you just said to Febri?",o:["What did","What do","What are","What does"],a:0,e:"'just' → past → did"},
+{q:"___ cleaned up this floor last night?",o:["Who","What","Where","When"],a:0,e:"Menanyakan orang → Who"},
+{q:"___ your father been a civil servant?",o:["Is","Has","Have","Does"],a:1,e:"Present perfect → has been"},
+{q:"With whom does Jerry ___ to work?",o:["goes","go","went","going"],a:1,e:"Setelah does → V1"},
+{q:"___ you so serious last night?",o:["Why are","Why were","Why do","Why did"],a:1,e:"Last night → were"},
+{q:"She lost her keys and she couldn't find ___ anywhere",o:["it","them","her","him"],a:1,e:"Keys = plural → them"},
+{q:"Whose car ___ your friend driving?",o:["is","are","does","did"],a:0,e:"is driving (present continuous)"},
+{q:"___ you always think about him?",o:["Do","Does","Are","Did"],a:0,e:"You → do"},
+{q:"___ just someone ordered here?",o:["Did","Do","Was","Has"],a:0,e:"Past → did"},
+{q:"She ___ well in the final exam",o:["do","did","done","doing"],a:1,e:"Past → did well"},
+{q:"She ___ a beautiful painting yesterday",o:["make","made","makes","making"],a:1,e:"Yesterday → made"},
+{q:"We ___ attend a meeting tomorrow",o:["will","did","are","were"],a:0,e:"Future → will"},
+{q:"Does your sister ___ music?",o:["plays","play","played","playing"],a:1,e:"Does → V1"},
+{q:"___ he ___ correctly?",o:["Did-answer","Has-answered","Does-answer","Is-answering"],a:1,e:"Sudah → present perfect"},
+{q:"My mom ___ in the kitchen now",o:["cook","cooks","is cooking","cooked"],a:2,e:"Now → is cooking"},
+{q:"___ you ___ that movie last week?",o:["Do-watch","Did-watch","Are-watching","Have-watched"],a:1,e:"Last week → did"},
+{q:"My father ___ to the market every morning",o:["go","goes","went","going"],a:1,e:"He → goes"},
+{q:"___ you usually ___ up at 4 AM?",o:["Do-wake","Did-wake","Are-waking","Have-woken"],a:0,e:"Usually → present simple"}
+
 ];
 
 let current=0;
 let answers=new Array(questions.length).fill(null);
 
-// unlock sound
-document.body.addEventListener("click",function(){
-correctSound.play().then(()=>correctSound.pause()).catch(()=>{});
-wrongSound.play().then(()=>wrongSound.pause()).catch(()=>{});
-},{once:true});
-
 function toast(msg,color){
+document.querySelectorAll(".toast").forEach(t=>t.remove());
+
 let t=document.createElement("div");
 t.className="toast";
 t.style.background=color;
 t.innerText=msg;
 document.body.appendChild(t);
+
 setTimeout(()=>t.remove(),2000);
 }
 
 function render(){
+
 let q=questions[current];
+
 document.getElementById("question").innerText=q.q;
+document.getElementById("progress").innerText=`Soal ${current+1} / ${questions.length}`;
 
 let box=document.getElementById("options");
 box.innerHTML="";
 
 q.o.forEach((opt,i)=>{
+
 let div=document.createElement("div");
 div.className="option";
 
@@ -140,15 +207,16 @@ if(i==q.a) div.classList.add("correct");
 if(i==answers[current] && i!=q.a) div.classList.add("wrong");
 }
 
-div.innerText=opt;
+div.innerText=opt.replace("-", " - ");
 
 div.onclick=()=>{
+
 if(answers[current]!=null) return;
 
 answers[current]=i;
 
 if(i==q.a){
-confetti({particleCount:150,spread:80});
+confetti({particleCount:80,spread:60});
 correctSound.currentTime=0;
 correctSound.play();
 toast("✅ BENAR","green");
@@ -162,18 +230,32 @@ render();
 };
 
 box.appendChild(div);
+
 });
 
 let exp=document.getElementById("explanation");
+
 if(answers[current]!=null){
 exp.innerHTML="<b>Penjelasan:</b> "+q.e;
 }else{
 exp.innerHTML="";
 }
+
 }
 
-function next(){if(current<questions.length-1){current++;render();}}
-function prev(){if(current>0){current--;render();}}
+function next(){
+if(current<questions.length-1){
+current++;
+render();
+}
+}
+
+function prev(){
+if(current>0){
+current--;
+render();
+}
+}
 
 render();
 
