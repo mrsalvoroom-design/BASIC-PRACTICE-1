@@ -163,7 +163,6 @@
         }
 
         .feedback-area {
-            background: #F8F4FF;
             border-radius: 1.5rem;
             padding: 1.2rem 1.5rem;
             margin: 1rem 0 1.5rem;
@@ -300,34 +299,129 @@
 </div>
 
 <script>
-    // ---------- SOAL + JAWABAN LENGKAP + PENJELASAN ----------
+    // ---------- SOAL + JAWABAN LENGKAP + PENJELASAN (DIKOREKSI) ----------
     const questionsData = [
-        { q: "Where ___ your mom usually pick you up?", o: ["Have", "do", "has", "does"], correct: 3, explanation: "Kata 'your mom' (she) membutuhkan auxiliary 'does' untuk present tense (simple present)." },
-        { q: "___ you just said to Febri?", o: ["What did", "What", "What have", "What does"], correct: 0, explanation: "Pertanyaan tentang masa lalu (just said) → 'What did you just say' adalah bentuk yang benar." },
-        { q: "___ cleaned up this floor last night?", o: ["Who did", "Who does", "who", "Who Was"], correct: 0, explanation: "'Who did clean up?' lebih umum, namun struktur tanya subjek: 'Who cleaned...' tapi opsi 'Who did' paling sesuai dengan pola baku. Jawaban: Who did (melengkapi auxiliary untuk past)." },
-        { q: "___ your father been a civil servant?", o: ["Does", "Has", "Is", "Did"], correct: 1, explanation: "Present perfect (been) → menggunakan 'Has' untuk subject your father (he)." },
-        { q: "With whom does Jerry ___ to work?", o: ["goes", "go", "gone", "going"], correct: 1, explanation: "Setelah does + kata kerja bentuk dasar (infinitive) → 'go'." },
-        { q: "___ you so serious last night?", o: ["Why did", "Why was", "Why were", "Why do"], correct: 2, explanation: "Subject 'you' + last night (past) → memakai 'were' (Why were you so serious?)." },
-        { q: "She lost her keys and she couldn't find ___ anywhere", o: ["their", "there", "they're", "them"], correct: 3, explanation: "Object pronoun untuk keys (plural) adalah 'them'." },
-        { q: "Whose car ___ your friend driving?", o: ["do", "does", "are", "is"], correct: 3, explanation: "Present continuous: 'is driving', subject your friend (singular)." },
-        { q: "___ you always think about him?", o: ["what", "what are", "what do", "what did"], correct: 2, explanation: "Simple present question dengan 'always' → 'What do you always think'." },
-        { q: "___ just someone ordered here?", o: ["what have", "what had", "what has", "what are"], correct: 2, explanation: "Present perfect: 'What has just someone ordered' → has untuk someone (singular)." },
-        { q: "She ___ well in the final exam", o: ["perform", "performed", "performs", "performing"], correct: 1, explanation: "Kalimat lampau (final exam sudah lewat) → 'performed'." },
-        { q: "She ___ a beautiful painting yesterday", o: ["paint", "paints", "painted", "painting"], correct: 2, explanation: "Keterangan waktu yesterday → past tense: painted." },
-        { q: "We ___ attend a meeting tomorrow", o: ["will", "will be", "want", "can"], correct: 0, explanation: "Future: 'will attend' tanpa to be setelah will." },
-        { q: "Does your sister ___ music?", o: ["listen", "listens", "listened", "listening"], correct: 0, explanation: "Does + verb-1 (listen)." },
-        { q: "___ he ___ correctly?", o: ["does-answered", "Has-answered", "Does-answer", "have-answered"], correct: 2, explanation: "Does he answer? → bentuk present simple tanya." },
-        { q: "My mom ___ in the kitchen now", o: ["cook", "cooks", "is cooking", "was cooking"], correct: 2, explanation: "'now' menunjukkan present continuous → is cooking." },
-        { q: "___ you ___ that movie last week?", o: ["Do-saw", "do-seen", "do-see", "did-see"], correct: 3, explanation: "Last week → past tense: Did you see." },
-        { q: "My father ___ to the market every morning", o: ["go", "goes", "went", "going"], correct: 1, explanation: "Every morning (habit) → he goes." },
-        { q: "___ you usually ___ up at 4 AM?", o: ["Do-wake", "Does-wake", "Did-wake", "Does-wakes"], correct: 0, explanation: "Subject you + usually → Do you wake." }
+        { 
+            q: "Where ___ your mom usually pick you up?", 
+            o: ["Have", "do", "has", "does"], 
+            correct: 3, 
+            explanation: "💡 **Pembahasan:** Subjek 'your mom' adalah orang ketiga tunggal (she). Dalam Simple Present Tense untuk kalimat tanya, kita menggunakan auxiliary 'does' diikuti verb-1. Rumus: Where + does + subject + verb-1? ✓ Jawaban: <strong>does</strong>" 
+        },
+        { 
+            q: "___ you just said to Febri?", 
+            o: ["What did", "What", "What have", "What does"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kalimat ini menggunakan Present Perfect Tense karena ada kata 'just' yang menunjukkan kejadian baru saja terjadi. Rumus: What + have/has + subject + verb-3? Subjek 'you' menggunakan 'have'. ✓ Jawaban: <strong>What have</strong> (What have you just said to Febri?)" 
+        },
+        { 
+            q: "___ cleaned up this floor last night?", 
+            o: ["Who did", "Who does", "who", "Who Was"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Ketika menanyakan subjek (pelaku) dengan 'who', kita tidak memerlukan auxiliary 'do/does/did'. Cukup gunakan 'who' diikuti verb-2 (past tense) karena ada keterangan waktu 'last night'. ✓ Jawaban: <strong>Who</strong> (Who cleaned up this floor last night?)" 
+        },
+        { 
+            q: "___ your father been a civil servant?", 
+            o: ["Does", "Has", "Is", "Did"], 
+            correct: 1, 
+            explanation: "💡 **Pembahasan:** Kalimat ini menggunakan Present Perfect Tense yang ditandai dengan kata 'been' (verb-3 dari 'be'). Subjek 'your father' adalah orang ketiga tunggal, sehingga menggunakan auxiliary 'has'. ✓ Jawaban: <strong>Has</strong> (Has your father been a civil servant?)" 
+        },
+        { 
+            q: "With whom does Jerry ___ to work?", 
+            o: ["goes", "go", "gone", "going"], 
+            correct: 1, 
+            explanation: "💡 **Pembahasan:** Setelah auxiliary 'does' dalam kalimat tanya, kata kerja yang digunakan harus berbentuk verb-1 (infinitive tanpa 'to'). ✓ Jawaban: <strong>go</strong> (With whom does Jerry go to work?)" 
+        },
+        { 
+            q: "___ you so serious last night?", 
+            o: ["Why did", "Why was", "Why were", "Why do"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kalimat ini menggunakan Simple Past Tense dengan kata 'last night'. Subjek 'you' dalam past tense menggunakan 'were'. ✓ Jawaban: <strong>Why were</strong> (Why were you so serious last night?)" 
+        },
+        { 
+            q: "She lost her keys and she couldn't find ___ anywhere", 
+            o: ["their", "there", "they're", "them"], 
+            correct: 3, 
+            explanation: "💡 **Pembahasan:** 'keys' adalah benda jamak (plural). Object pronoun untuk benda jamak adalah 'them'. ✓ Jawaban: <strong>them</strong> (She couldn't find them anywhere)" 
+        },
+        { 
+            q: "Whose car ___ your friend driving?", 
+            o: ["do", "does", "are", "is"], 
+            correct: 3, 
+            explanation: "💡 **Pembahasan:** Kalimat ini menggunakan Present Continuous Tense (driving). Subjek 'your friend' adalah tunggal, sehingga menggunakan 'is'. Rumus: Whose + is + subject + verb-ing? ✓ Jawaban: <strong>is</strong> (Whose car is your friend driving?)" 
+        },
+        { 
+            q: "___ you always think about him?", 
+            o: ["what", "what are", "what do", "what did"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kata 'always' menandakan kebiasaan (Simple Present Tense). Subjek 'you' menggunakan auxiliary 'do' untuk kalimat tanya. ✓ Jawaban: <strong>what do</strong> (What do you always think about him?)" 
+        },
+        { 
+            q: "___ just someone ordered here?", 
+            o: ["what have", "what had", "what has", "what are"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kata 'just' menandakan Present Perfect Tense. Subjek 'someone' adalah orang ketiga tunggal, menggunakan 'has'. ✓ Jawaban: <strong>what has</strong> (What has just someone ordered here?)" 
+        },
+        { 
+            q: "She ___ well in the final exam", 
+            o: ["perform", "performed", "performs", "performing"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Karena tidak ada keterangan waktu lampau dan ini merupakan fakta umum atau kebiasaan, kita menggunakan Simple Present Tense. Subjek 'She' (orang ketiga tunggal) menggunakan verb+s. ✓ Jawaban: <strong>performs</strong> (She performs well in the final exam)" 
+        },
+        { 
+            q: "She ___ a beautiful painting yesterday", 
+            o: ["paint", "paints", "painted", "painting"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kata 'yesterday' adalah keterangan waktu lampau, sehingga menggunakan Simple Past Tense. ✓ Jawaban: <strong>painted</strong> (She painted a beautiful painting yesterday)" 
+        },
+        { 
+            q: "We ___ attend a meeting tomorrow", 
+            o: ["will", "will be", "want", "can"], 
+            correct: 0, 
+            explanation: "💡 **Pembahasan:** Kata 'tomorrow' menandakan Future Tense. Rumus Simple Future: Subject + will + verb-1. ✓ Jawaban: <strong>will</strong> (We will attend a meeting tomorrow)" 
+        },
+        { 
+            q: "Does your sister ___ music?", 
+            o: ["listen", "listens", "listened", "listening"], 
+            correct: 0, 
+            explanation: "💡 **Pembahasan:** Setelah auxiliary 'does' dalam kalimat tanya, kata kerja harus berbentuk verb-1 (infinitive). ✓ Jawaban: <strong>listen</strong> (Does your sister listen to music?)" 
+        },
+        { 
+            q: "___ he ___ correctly?", 
+            o: ["does-answered", "Has-answered", "Does-answering", "have-answered"], 
+            correct: 1, 
+            explanation: "💡 **Pembahasan:** Untuk menanyakan apakah seseorang telah melakukan sesuatu dengan benar, kita menggunakan Present Perfect Tense. Subjek 'he' menggunakan 'has' diikuti verb-3 'answered'. ✓ Jawaban: <strong>Has-answered</strong> (Has he answered correctly?)" 
+        },
+        { 
+            q: "My mom ___ in the kitchen now", 
+            o: ["cook", "cooks", "is cooking", "was cooking"], 
+            correct: 2, 
+            explanation: "💡 **Pembahasan:** Kata 'now' menunjukkan aksi yang sedang berlangsung saat ini, menggunakan Present Continuous Tense. Subjek 'My mom' (tunggal) menggunakan 'is' + verb-ing. ✓ Jawaban: <strong>is cooking</strong> (My mom is cooking in the kitchen now)" 
+        },
+        { 
+            q: "___ you ___ that movie last week?", 
+            o: ["Do-saw", "do-seen", "do-see", "did-see"], 
+            correct: 3, 
+            explanation: "💡 **Pembahasan:** Kata 'last week' adalah keterangan waktu lampau, sehingga menggunakan Simple Past Tense. Kalimat tanya menggunakan 'did' diikuti verb-1 'see'. ✓ Jawaban: <strong>did-see</strong> (Did you see that movie last week?)" 
+        },
+        { 
+            q: "My father ___ to the market every morning", 
+            o: ["go", "goes", "went", "going"], 
+            correct: 1, 
+            explanation: "💡 **Pembahasan:** Kata 'every morning' menunjukkan kebiasaan (Simple Present Tense). Subjek 'My father' (orang ketiga tunggal) menggunakan verb+s. ✓ Jawaban: <strong>goes</strong> (My father goes to the market every morning)" 
+        },
+        { 
+            q: "___ you usually ___ up at 4 AM?", 
+            o: ["Do-wake", "Does-wake", "Did-wake", "Do-wakes"], 
+            correct: 0, 
+            explanation: "💡 **Pembahasan:** Kata 'usually' menandakan kebiasaan (Simple Present Tense). Subjek 'you' menggunakan auxiliary 'do' diikuti verb-1 'wake'. ✓ Jawaban: <strong>Do-wake</strong> (Do you usually wake up at 4 AM?)" 
+        }
     ];
 
     // state aplikasi
-    let currentIndex = 0;               // index soal saat ini
-    let userAnswers = new Array(questionsData.length).fill(null);   // menyimpan index jawaban yang dipilih (0-3) atau null
-    let answerStatus = new Array(questionsData.length).fill(false);  // true jika jawaban sudah benar, false jika salah/null
-    let answeredQuestions = new Array(questionsData.length).fill(false); // apakah sudah menjawab (opsi diklik)
+    let currentIndex = 0;
+    let userAnswers = new Array(questionsData.length).fill(null);
+    let answerStatus = new Array(questionsData.length).fill(false);
+    let answeredQuestions = new Array(questionsData.length).fill(false);
     let score = 0;
     
     const totalQ = questionsData.length;
@@ -358,15 +452,13 @@
     // update tampilan tombol navigasi
     function updateNavButtons() {
         prevBtn.disabled = (currentIndex === 0);
-        // next disabled hanya jika soal belum dijawab? tapi user boleh pindah setelah menjawab, tapi jika belum dijawab tidak bisa next
-        // lebih baik next aktif kalau sudah menjawab (answeredQuestions[currentIndex] === true) atau boleh pindah walaupun belum? agar konsisten, kita enable next hanya jika sudah menjawab
-        // dan juga jika sudah di akhir, text next jadi selesai? akan kita handle logic next.
+        
         if (currentIndex === totalQ - 1) {
             nextBtn.innerHTML = '<i class="fas fa-check-circle"></i> Lihat Hasil';
         } else {
             nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Selanjutnya';
         }
-        // disable next jika belum menjawab pada soal saat ini (kecuali saat selesai atau sudah dijawab)
+        
         if (!answeredQuestions[currentIndex]) {
             nextBtn.disabled = true;
         } else {
@@ -374,7 +466,7 @@
         }
     }
     
-    // render feedback berdasarkan jawaban yang tersimpan (jika sudah dijawab)
+    // render feedback berdasarkan jawaban yang tersimpan
     function renderFeedbackForCurrent() {
         const idx = currentIndex;
         const selected = userAnswers[idx];
@@ -399,7 +491,7 @@
                     <i class="fas fa-check-circle" style="color:#2b9348; font-size:1.2rem;"></i>
                     <strong>✅ Jawaban Benar!</strong> &nbsp; Pilihanmu: "${selectedText}" 
                 </div>
-                <div style="margin-top: 8px; font-size:0.9rem;">📘 <strong>Kunci & Pembahasan:</strong> ${explanation} (Jawaban benar: <strong>${correctText}</strong>)</div>
+                <div style="margin-top: 8px; font-size:0.95rem; line-height:1.5;">${explanation}</div>
             `;
         } else {
             feedbackArea.className = "feedback-area feedback-wrong";
@@ -408,12 +500,12 @@
                     <i class="fas fa-times-circle" style="color:#e63946; font-size:1.2rem;"></i>
                     <strong>❌ Jawaban Salah</strong> &nbsp; Kamu menjawab: "${selectedText}"
                 </div>
-                <div style="margin-top: 8px; font-size:0.9rem;">📘 <strong>Kunci & Pembahasan:</strong> ${explanation} (Jawaban benar: <strong>${correctText}</strong>)</div>
+                <div style="margin-top: 8px; font-size:0.95rem; line-height:1.5;">${explanation}<br><br>📌 <strong>Jawaban yang benar adalah:</strong> "${correctText}"</div>
             `;
         }
     }
     
-    // render soal saat ini (opsi, highlight jika sudah memilih)
+    // render soal saat ini
     function renderCurrentQuestion() {
         const qData = questionsData[currentIndex];
         questionTextEl.innerText = qData.q;
@@ -441,13 +533,11 @@
         // attach event listener ke opsi
         document.querySelectorAll('.option-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // jika soal sudah dijawab sebelumnya, boleh ganti jawaban? kita perbolehkan agar bisa revisi
                 const optIndex = parseInt(btn.dataset.optIndex);
                 handleAnswer(optIndex);
             });
         });
         
-        // tampilkan feedback sesuai status
         renderFeedbackForCurrent();
         updateNavButtons();
         document.getElementById("currentIdxDisplay").innerText = currentIndex + 1;
@@ -459,48 +549,38 @@
         const isCorrectNow = (selectedIndex === currentQ.correct);
         const wasAlreadyAnswered = answeredQuestions[currentIndex];
         
-        // update state
         userAnswers[currentIndex] = selectedIndex;
         answeredQuestions[currentIndex] = true;
         const oldStatus = answerStatus[currentIndex];
         answerStatus[currentIndex] = isCorrectNow;
         
-        // jika status berubah (dari salah jadi benar atau benar jadi salah), update score
         if (oldStatus !== isCorrectNow) {
             recalcScore();
         } else if (!wasAlreadyAnswered && isCorrectNow) {
-            // pertama kali jawab dan benar
             recalcScore();
         } else if (!wasAlreadyAnswered && !isCorrectNow) {
-            recalcScore(); // score belum berubah karena belum dihitung sebelumnya, tapi untuk safety panggil recalc
+            recalcScore();
         } else if (wasAlreadyAnswered && oldStatus !== isCorrectNow) {
             recalcScore();
         } else {
-            // tetap
             recalcScore();
         }
         
-        // re-render opsi highlight dan feedback langsung
-        renderCurrentQuestion();  // merefresh opsi dan feedback
-        // setelah menjawab, pastikan tombol next aktif
+        renderCurrentQuestion();
         updateNavButtons();
     }
     
     // navigasi next
     function goNext() {
         if (currentIndex < totalQ - 1) {
-            // pindah ke soal berikutnya
             currentIndex++;
             renderCurrentQuestion();
             updateNavButtons();
         } else {
-            // sudah di akhir dan sudah menjawab? Tampilkan hasil akhir dan analisis kelemahan
             if (answeredQuestions.every(v => v === true)) {
                 showFinalResult();
             } else {
-                // belum semua soal terjawab, kasih peringatan tidak bisa lihat hasil karena masih ada yang belum dijawab
                 alert(`⚠️ Anda belum menjawab semua soal! Selesaikan dulu ${totalQ - answeredQuestions.filter(v=>v===true).length} soal tersisa.`);
-                // optional: bisa tetap paksa tapi lebih baik diselesaikan.
                 return;
             }
         }
@@ -514,30 +594,39 @@
         }
     }
     
-    // fungsi analisis kelemahan per materi (berdasarkan topik sederhana dari pola soal)
+    // fungsi analisis kelemahan
     function analyzeWeakness() {
-        // mapping kategori sederhana: misal berdasarkan kata kunci: tenses, auxiliary, pronoun, dll
         let categories = {
-            "Auxiliary & DO/DOES/DID": [],
-            "Tenses (Past/Present/Future)": [],
-            "Pronoun/Object": [],
-            "Question Words": []
+            "Auxiliary & Helping Verbs": [],
+            "Tenses (Simple Present)": [],
+            "Tenses (Past/Present Perfect)": [],
+            "Tenses (Future/Continuous)": [],
+            "Pronouns & Objects": [],
+            "Question Words & Structure": []
         };
+        
         for (let i = 0; i < totalQ; i++) {
             const isCorrect = answerStatus[i];
             const qText = questionsData[i].q;
             let category = "";
-            if (qText.includes("do") || qText.includes("does") || qText.includes("did") || qText.includes("Where ___") || qText.includes("Does your") || qText.includes("With whom does")) category = "Auxiliary & DO/DOES/DID";
-            else if (qText.includes("last night") || qText.includes("yesterday") || qText.includes("every morning") || qText.includes("now") || qText.includes("tomorrow") || qText.includes("usually")) category = "Tenses (Past/Present/Future)";
-            else if (qText.includes("her keys") || qText.includes("Whose car") || qText.includes("___ they're") || qText.includes("find ___")) category = "Pronoun/Object";
-            else category = "Question Words";
+            
+            if (qText.includes("does") || qText.includes("do") || qText.includes("did") || qText.includes("has") || qText.includes("have")) {
+                if (qText.includes("Where ___") || qText.includes("With whom does")) category = "Auxiliary & Helping Verbs";
+                else if (qText.includes("___ he ___") || qText.includes("___ your father been")) category = "Auxiliary & Helping Verbs";
+                else category = "Auxiliary & Helping Verbs";
+            }
+            else if (qText.includes("every morning") || qText.includes("usually") || (qText.includes("She ___ well") && !qText.includes("yesterday"))) category = "Tenses (Simple Present)";
+            else if (qText.includes("yesterday") || qText.includes("last night") || qText.includes("last week")) category = "Tenses (Past/Present Perfect)";
+            else if (qText.includes("now") || qText.includes("tomorrow") || qText.includes("driving")) category = "Tenses (Future/Continuous)";
+            else if (qText.includes("her keys") || qText.includes("find ___")) category = "Pronouns & Objects";
+            else category = "Question Words & Structure";
             
             if (!isCorrect) {
                 categories[category] = categories[category] || [];
                 categories[category].push(i+1);
             }
         }
-        // filter yg punya kelemahan
+        
         let weaknesses = [];
         for (let [cat, arr] of Object.entries(categories)) {
             if (arr.length > 0) weaknesses.push({ cat, count: arr.length, soal: arr });
@@ -546,7 +635,6 @@
     }
     
     function showFinalResult() {
-        // sembunyikan quiz card, tampilkan result area
         quizCardDiv.style.display = "none";
         document.querySelector(".score-panel").style.display = "none";
         resultAreaDiv.style.display = "block";
@@ -570,7 +658,6 @@
             weakHtml += `</div><p style="margin-top: 12px; font-size: 0.85rem;">✨ Fokus ulang pada materi di atas untuk meningkatkan skor!</p>`;
         }
         
-        // tambahkan chart sederhana (score pie)
         resultAreaDiv.innerHTML = `
             <div style="text-align: center;">
                 <i class="fas fa-chalkboard-user" style="font-size: 3rem; color:#8B5CF6;"></i>
@@ -585,7 +672,6 @@
             </div>
         `;
         
-        // pie chart
         const ctx = document.getElementById('scoreChart').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
@@ -602,7 +688,6 @@
         });
         
         document.getElementById("restartQuizBtn").addEventListener("click", () => {
-            // reset semua state
             userAnswers.fill(null);
             answerStatus.fill(false);
             answeredQuestions.fill(false);
